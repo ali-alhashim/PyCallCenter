@@ -1,4 +1,4 @@
-import random
+import os
 import sys
 from PySide6 import QtCore, QtWidgets, QtGui
 from PySide6.QtWidgets import QFileDialog
@@ -16,12 +16,13 @@ class MyWidget(QtWidgets.QWidget):
         self.layout.addWidget(self.text)
         self.layout.addWidget(self.button)
 
-        self.button.clicked.connect(self.csvToHtml)
+        self.button.clicked.connect(self.csv_rearrange)
 
     @QtCore.Slot()
-    def csvToHtml(self):
-        print("start def to convert csv to html")
-        filename = QFileDialog.getOpenFileName(self, 'Open file', 'c:\\', "CSV files (*.csv)")
+    def csv_rearrange(self):
+        print("start def to rearrange  csv ")
+        BASE_DIR = os.getcwd()
+        filename = QFileDialog.getOpenFileName(self, 'Open file', BASE_DIR, "CSV files (*.csv)")
 
 
 if __name__ == "__main__":
